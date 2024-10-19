@@ -1,0 +1,137 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e9ecef; /* Soft light gray for a pleasant background */
+    color: #343a40; /* Dark gray for better text visibility */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container for the content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff; /* White background for the container */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+h1 {
+    margin-bottom: 20px;
+    color: #007bff; /* Bootstrap primary color */
+    font-size: 28px;
+    text-align: center;
+}
+
+/* List Styles */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #dee2e6; /* Light border for better separation */
+    transition: background-color 0.2s;
+}
+
+li:last-child {
+    border-bottom: none; /* No border for the last item */
+}
+
+li:hover {
+    background-color: #f1f1f1; /* Light gray on hover */
+}
+
+/* Product Image Styles */
+.product-image {
+    width: 100px; /* Fixed width for product images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Slight rounding of image corners */
+}
+
+/* Product Info Styles */
+.product-info {
+    flex-grow: 1; /* Allow this div to grow */
+    margin-left: 15px; /* Space between image and info */
+}
+
+/* Text Styles */
+.product-name {
+    font-weight: bold;
+    font-size: 18px; /* Larger font for product name */
+    color: #212529; /* Darker color for product name */
+}
+
+.product-price {
+    font-size: 16px; /* Font size for price */
+    color: #28a745; /* Bootstrap success color for price */
+}
+
+/* Button Styles */
+button {
+    padding: 10px 15px;
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Links */
+a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px; /* Adjust font size on smaller screens */
+    }
+
+    button, a {
+        width: 100%; /* Full-width buttons on small screens */
+        text-align: center;
+    }
+
+    .product-image {
+        width: 80px; /* Smaller product image on small screens */
+    }
+}

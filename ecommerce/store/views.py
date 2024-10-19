@@ -61,12 +61,27 @@ def update_cart(request, product_id):
 
 @login_required
 def remove_from_cart(request, product_id):
-    cart = Cart.objects.get(user=request.user)
-    cart_item = get_object_or_404(CartItem, cart=cart, product_id=product_id)
-    cart_item.delete()
-    messages.success(request, 'Item removed from cart.')
+    # Get the cart for the logged-in user
+    cart = get_object_or_404(Cart, user=request.user)
+
+    # Try to get the CartItem associated with the product
+    try:
+        cart_item = get_object_or_404(CartItem, cart=cart, product_id=product_id)
+        cart_item.delete()  # Remove the item from the cart
+        messages.success(request, 'Item removed from the cart.')
+    except CartItem.DoesNotExist:
+        messages.warning(request, 'Item not found in the cart.')
+
     return redirect('cart')
 
+def search(request):
+    query = request.GET.get('q', '')
+    products = Product.objects.filter(name__icontains=query)
+    context = {
+        'products': products,
+        'query': query,
+    }
+    return render(request, 'store/search_results.html', context)
 @require_POST
 @login_required
 def process_checkout(request):

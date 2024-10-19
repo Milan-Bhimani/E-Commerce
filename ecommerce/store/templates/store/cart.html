@@ -8,10 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Shopping Cart</title>
     <link rel="stylesheet" href="{% static 'css/styles_cart.css' %}">
-
 </head>
 <body>
     <div class="container">      
+        <!-- Navigation Bar -->
+        <nav>
+            <ul>
+                <li><a href="{% url 'product_list' %}">Product List</a></li>
+                <li>
+                    <form method="GET" action="{% url 'search' %}" style="display: inline;">
+                        <input type="text" name="q" placeholder="Search products..." required>
+                        <button type="submit">Search</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+
         <h1>Your Shopping Cart</h1>
 
         {% if cart.items.count == 0 %}
@@ -36,10 +48,34 @@
                             </form>
                         </td>
                         <td>${{ item.product.price }}</td>
-                        <td>${{ item.product.price|multiply:item.quantity }}</td>  <!-- Make sure you have this filter defined -->
+                        <td>${{ item.product.price|multiply:item.quantity }}</td>
+                        <td>
+                            <form method="POST" action="{% url 'remove_from_cart' item.product.id %}">
+                                {% csrf_token %}
+                                <button type="submit">Remove</button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
+                <tr>
+                    <td colspan="4" style="text-align: right;">
+                        <form method="GET" action="{% url 'checkout' %}">
+                            <button type="submit">Proceed to Checkout</button>
+                        </form>
+                    </td>
+                </tr>
             </table>
+        {% endif %}
+        
+        <!-- Move the messages section to the bottom -->
+        {% if messages %}
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
     </div>
 </body>

@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+
+    {% if products %}
+        <ul>
+            {% for product in products %}
+                <li>
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 100px; height: auto;">
+                    <span>{{ product.name }} - ${{ product.price }}</span>
+                    <form action="{% url 'add_to_cart' product.id %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Add to Cart</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No products found for "{{ query }}".</p>
+    {% endif %}
+
+    <a href="{% url 'product_list' %}">Back to Products</a>
+</body>
+</html>
