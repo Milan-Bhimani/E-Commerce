@@ -1,39 +1,66 @@
 /* styles_product.css */
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #f8f9fa; /* Light gray background */
+    background-image: url('../images/a nice nature image in the dark.png'); /* Path to your background image */
     margin: 0;
     padding: 0;
 }
 
-.product-detail {
-    width: 80%;
-    margin: auto;
+.header {
+    background-color: rgba(153, 153, 153, 0.107); /* Dark header */
+    color: #f8f5f5;
     padding: 20px;
     text-align: center;
 }
 
-.product-detail img {
-    max-width: 300px;
-    height: auto;
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
 }
 
-.product-detail h2 {
-    color: #333;
+.product-card {
+    background-color: #ffffff; /* White background for product card */
+    border: 1px solid #dee2e6; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin: 15px;
+    padding: 15px;
+    width: 200px; /* Fixed width for product cards */
+    text-align: center;
+    transition: transform 0.3s; /* Animation for hover effect */
 }
 
-.product-detail p {
-    color: #777;
+.product-card:hover {
+    transform: scale(1.05); /* Slightly enlarge card on hover */
 }
 
-.product-detail button {
-    background-color: #28a745;
-    border: none;
-    color: white;
-    padding: 10px 15px;
-    cursor: pointer;
+.product-card img {
+    max-width: 100%; /* Responsive image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Rounded corners for images */
 }
 
-.product-detail button:hover {
-    background-color: #218838;
+.button {
+    display: inline-block; /* Block-level for better padding */
+    margin-top: 10px; /* Space between elements */
+    padding: 10px 15px; /* Button padding */
+    background-color: #007bff; /* Blue background */
+    color: #ffffff; /* White text */
+    text-decoration: none; /* Remove underline */
+    border-radius: 5px; /* Rounded corners */
+    transition: background-color 0.3s; /* Animation for hover effect */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.no-products {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #888;
 }
