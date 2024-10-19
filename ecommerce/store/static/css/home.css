@@ -1,0 +1,42 @@
+/* home.css */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/A night scene with a lake in the background, some birds and animals, and only one human child.png'); /* Path to your background image */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    margin: 0;
+    padding: 0;
+    color: #00c7f9; 
+}
+
+.header {
+    background-color: rgba(52, 58, 64, 0.7);  
+    color: #050505; 
+    padding: 20px 0;
+    text-align: center;
+    border: 2px solid #1f1ff6; /* Add a white border around the header */
+    border-radius: 10px; /* Optional: Rounded corners for the header */
+    margin: 50px auto; /* Center the header with margin */
+    max-width: 400px; /* Limit the width for better centering */
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.view-products {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff; 
+    color: white; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    transition: background-color 0.3s;
+    border: 2px solid white; /* Add a white border to the button */
+}
+
+.view-products:hover {
+    background-color: #0056b3; 
+}

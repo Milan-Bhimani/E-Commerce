@@ -1,0 +1,46 @@
+{% load static %}
+{% load multiply %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart</title>
+    <link rel="stylesheet" href="{% static 'css/styles_cart.css' %}">
+
+</head>
+<body>
+    <div class="container">      
+        <h1>Your Shopping Cart</h1>
+
+        {% if cart.items.count == 0 %}
+            <p>Your cart is empty.</p>
+        {% else %}
+            <table>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+                {% for item in cart.items.all %}
+                    <tr>
+                        <td>{{ item.product.name }}</td>
+                        <td>
+                            <form method="POST" action="{% url 'update_cart' item.product.id %}">
+                                {% csrf_token %}
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                                <button type="submit">Update</button>
+                            </form>
+                        </td>
+                        <td>${{ item.product.price }}</td>
+                        <td>${{ item.product.price|multiply:item.quantity }}</td>  <!-- Make sure you have this filter defined -->
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</body>
+</html>
